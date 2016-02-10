@@ -1,4 +1,7 @@
+import java.sql.DatabaseMetaData;
+import java.util.Collections;
 import java.util.Scanner;
+import javax.xml.crypto.Data;
 
 
 public class GameRunner
@@ -6,15 +9,16 @@ public class GameRunner
 		public static void main (String[] args)
 			{
 				PlayerMaker.greetUser();
-				Gameplay.addCharacter();
-				Gameplay.userPlayerMaker();
-				Gameplay.comPlayerMaker();
-				Gameplay.roleInitiative();
-				Gameplay.determiningTheCharacter();
-				while(Gameplay.checkWonGame())
+				Fighter.addCharacter();
+				Fighter.userPlayerMaker();
+				Fighter.comPlayerMaker();
+				Fighter.newPlayers();
+				Collections.sort(Data.Fighter, new InitiativeSorter());
+				Fighter.determiningTheCharacter();
+				while(Fighter.checkWonGame())
 					{
-						Gameplay.runningTheGame();
-						Gameplay.checkWonGame();
+						Fighter.runningTheGame();
+						Fighter.checkWonGame();
 					}
 			}
 	}
