@@ -13,7 +13,8 @@ public class GameRunner
 				Fighter.userPlayerMaker();
 				Fighter.comPlayerMaker();
 				Fighter.newPlayers();
-				Collections.sort(Data.Fighter, new InitiativeSorter());
+				Collections.sort(Fighter.arenaPlayers, new InitiativeSorter());
+//				System.out.println("The order of players is " + Fighter.arenaPlayers.sort(Fighter.arenaPlayers.getInitiative()) + "");
 				Fighter.determiningTheCharacter();
 				while(Fighter.checkWonGame())
 					{
