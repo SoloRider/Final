@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Gameplay
 	{
 	static Scanner user1nput = new Scanner (System.in);
-	static int character = user1nput.nextInt();
-	static int eCharacter = user1nput.nextInt();
-	static int randomNumber = (int)(Math.random()* 4)+1;
+	static int character1;
+	static int character;
 	static ArrayList<Gameplay>comSkills = new ArrayList<Gameplay>();
 	static ArrayList<Gameplay>playerSkills = new ArrayList<Gameplay>();
+	static ArrayList<Gameplay> arenaPlayers = new ArrayList<Gameplay>();
 	static int dieRoll1 = (int)(Math.random()* 6)+1;
-	static int randomNumber1;
+	static int eCharacter1;
+	static int eCharacter;
 	private int defense;
 	private int health;
 	private String name;
@@ -25,49 +26,49 @@ public class Gameplay
 			health = h;
 			speed = s;
 		}
-	public static void main(String[] args)
+	public static void addCharacter()
 		{
-			userPlayerMaker();
-			comPlayerMaker();
-			determiningTheCharacter();
-			runningTheGame();
-			checkWonGame();
+			playerSkills.add(new Gameplay("Wood Elf Archer", 16, 14, 40));
+			playerSkills.add(new Gameplay("Dwarven Cleric", 16, 16, 30));
+			playerSkills.add(new Gameplay("Half-Elf Theif", 14, 14, 35));
+			playerSkills.add(new Gameplay("Human Paladin", 18, 20, 30));
+			comSkills.add(new Gameplay("Vampire King", 13, 20, 30));
+			comSkills.add(new Gameplay("Kobold", 14, 10, 30));
+			comSkills.add(new Gameplay("Cultists", 15, 12, 30));
+			comSkills.add(new Gameplay("The Beholder", 18, 30, 30));
 		}
 	public static void userPlayerMaker()
 		{
 			System.out.println("Which character do you want? (1) Wood Elf Ranger (2) Dwarven Cleric (3) Half-Elf Theif (4) Human Paladin");
-			System.out.println("Your first character is a " + character + ". I will now randonly generate one. (It can be the same one.)");
-			if(randomNumber == 1)
-				playerSkills.add(new Gameplay("Wood Elf Archer", 16, 14, 40));
-			if(randomNumber == 2)
-				playerSkills.add(new Gameplay("Dwarven Cleric", 16, 16, 30));
-			if(randomNumber == 3)
-				playerSkills.add(new Gameplay("Half-Elf Theif", 14, 14, 35));
-			if(randomNumber == 4)
-				playerSkills.add(new Gameplay("Human Knight", 18, 20, 30));
-			System.out.println("Your characters are a " + character + " and a " + randomNumber1 + ".");
+			character = user1nput.nextInt();
+			character--;
+			character1 = (int)(Math.random()* 4)+1;
+			System.out.println("Your players are a " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getDefense() + ", its health is " + playerSkills.get(character).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
+			System.out.println("and a " + playerSkills.get(character1).getName() + ", its defense is " + playerSkills.get(character1).getDefense() + ", its health is " + playerSkills.get(character1).getHealth() + ", and its speed is " + playerSkills.get(character1).getSpeed() + ".");
 		}
 	public static void comPlayerMaker()
 		{
 			System.out.println("Which character do you want for a bad guy? (1) Vampire King (2) Kobold (3) Cultist (4) The Beholder");
-			System.out.println("Your first character is a " + eCharacter + ". I will now randonly generate one. (It can be the same one.)");
-			randomNumber1 = (int)(Math.random()* 4)+1;
-			if(randomNumber1 == 1)
-					System.out.println("Your next character is a Vampire King.");
-			if(randomNumber1 == 2)
-					System.out.println("Your next character is a Kobold.");
-			if(randomNumber1 == 3)
-					System.out.println("Your next character is a Cultist.");
-			if(randomNumber1 == 4)
-					System.out.println("Your next character is a The Beholder.");
-			System.out.println("Your enemy characters are a " + eCharacter + " and a " + randomNumber1 + ".");
+			eCharacter = user1nput.nextInt();
+			eCharacter--;
+			System.out.println("Your enemy players are a " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getDefense() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
+			System.out.println("and a " + comSkills.get(eCharacter1).getName() + ", its defense is " + comSkills.get(eCharacter1).getDefense() + ", its health is " + comSkills.get(eCharacter1).getHealth() + ", and its speed is " + comSkills.get(eCharacter1).getSpeed() + ".");
+		}
+	public static void roleInitiative()
+		{
+			System.out.println("Now we rold for initiative to see who goes first in the battle.");
+			int inti1 = (int)(Math.random()* 20)+1;
+			System.out.println(playerSkills.get(character).getName() + " got a " + inti1 + ".");
+			int inti2 = (int)(Math.random()* 20)+1;
+			System.out.println(playerSkills.get(character1).getName() + " got a " + inti2 + ".");
+			int inti3 = (int)(Math.random()* 20)+1;
+			System.out.println(comSkills.get(eCharacter).getName() + " got a " + inti3 + ".");
+			int inti4 = (int)(Math.random()* 20)+1;
+			System.out.println(comSkills.get(eCharacter1).getName() + " got a " + inti4 + ".");
 		}
 	public static void determiningTheCharacter()
 		{
 			System.out.println("Now it's time to battle!");
-			System.out.println("Your player is " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getDefense() + ", its health is " + playerSkills.get(player).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
-			System.out.println("Your monster is " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getDefense() + ", its health is" + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
-			System.out.println("You go first.");
 			System.out.println("The Beholder rolls four times, so be prepared...");
 		}
 	public static void runningTheGame()
@@ -79,9 +80,9 @@ public class Gameplay
 			int dieRoll = (int)(Math.random()* 20)+1;
 			System.out.println("You rolled a: " + dieRoll + ".");
 			if(dieRoll > comSkills.get(player).getDefense())
-					System.out.println("You hit :) :) :) :)!!!!");
+				System.out.println("You hit :) :) :) :)!!!!");
 			else
-					System.out.println("You missed :( :( :( :( :(.");
+				System.out.println("You missed :( :( :( :( :(.");
 			if(dieRoll > comSkills.get(player).getDefense())
 				{
 					System.out.println("Now it's time to roll the damage dice.");
@@ -97,17 +98,17 @@ public class Gameplay
 					{
 						System.out.println("The die roll is " + dieRoll1 + ".");
 						if(dieRoll1 == 1)
-								comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
+							comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
 						if(dieRoll1 == 2)
 							comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
 						if(dieRoll1 == 3)
-								comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
+							comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
 						if(dieRoll1 == 4)
-								comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
+							comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
 						if(dieRoll1 == 5)
-								comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
+							comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
 						if(dieRoll1 == 6)
-								comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
+							comSkills.get(player).setHealth(comSkills.get(player).getHealth() - dieRoll1);
 					}
 					System.out.println(comSkills.get(player).getHealth());
 					System.out.println("... Is the monster's new health.");
@@ -124,7 +125,7 @@ public class Gameplay
 				System.out.println("Monster missed :) :) :) :) :)!!!!");
 			if(comRoll > playerSkills.get(player).getDefense())
 				{
-					if(randomNumber1 == 3)
+					if(eCharacter1 == 3)
 						{
 							int dieRoll3 = (int)(Math.random()*4)+1;
 							System.out.println("His die roll is " + dieRoll3 + ".");

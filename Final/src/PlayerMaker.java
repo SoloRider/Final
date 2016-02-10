@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class PlayerMaker
 	{
-		public static void main(String[] args)
-			{
-				greetUser();
-			}
 		public static void greetUser()
 			{
 				Scanner userlnput = new Scanner (System.in);
@@ -25,7 +21,7 @@ public class PlayerMaker
 					{
 						System.out.println("Let's get it onnn!!!");
 					}
-				System.out.println("Ok, you will have 3 players to face 3 bad guys. Let the games begin!!!");
+				System.out.println("Ok, you will have 2 players to face 2 bad guys. Let the games begin!!!");
 				System.out.println("____________________________________");
 				System.out.println();
 			}
