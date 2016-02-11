@@ -2,17 +2,11 @@ import java.util.Collections;
 import java.util.Comparator;
 public class InitiativeSorter implements Comparator<Fighter>
 	{
-		public static int compare(Fighter inti1, Fighter inti2, Fighter inti3, Fighter inti4)
+		public int compare(Fighter f1, Fighter f2)
 			{
-				if(inti1.getIntiative() < inti2.getIntiative())
+				if(f1.getInitiative() < f2.getInitiative())
 					return 1;
 				else
 					return -1;
-			}
-		@Override
-		public int compare(Fighter o1, Fighter o2)
-			{
-				// TODO Auto-generated method stub
-				return 0;
 			}
 	}

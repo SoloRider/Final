@@ -7,6 +7,7 @@ public class Fighter
 	static Scanner user1nput = new Scanner (System.in);
 	static int character1;
 	static int character;
+	static int characterPlace = 0;
 	static ArrayList<Fighter> comSkills = new ArrayList<Fighter>();
 	static ArrayList<Fighter> playerSkills = new ArrayList<Fighter>();
 	static ArrayList<Fighter> arenaPlayers = new ArrayList<Fighter>();
@@ -16,7 +17,7 @@ public class Fighter
 	private int health;
 	private String name;
 	private int speed;
-	private int intiative;
+	private int initiative;
 	static boolean com;
 	public Fighter(String n ,int aC, int h, int s, int i)
 		{
@@ -24,7 +25,7 @@ public class Fighter
 			armorClass = aC;
 			health = h;
 			speed = s;
-			intiative = i;
+			initiative = i;
 		}
 	public static void addCharacter()
 		{
@@ -32,10 +33,10 @@ public class Fighter
 			playerSkills.add(new Fighter("Bolba", 22, 16, 30, 14));
 			playerSkills.add(new Fighter("Amiar", 16, 14, 35, 17));
 			playerSkills.add(new Fighter("Ajaxx", 19, 20, 30, 14));
-			comSkills.add(new Fighter("Smaug", 17, 25, 35, 18));
-			comSkills.add(new Fighter("Ettin", 10, 40, 30, 13));
-			comSkills.add(new Fighter("Myrna", 12, 15, 30, 14));
-			comSkills.add(new Fighter("Arcam", 18, 30, 15, 19));
+			comSkills.add(new Fighter("Smaug", 17, 52, 35, 18));
+			comSkills.add(new Fighter("Ettin", 10, 88, 30, 13));
+			comSkills.add(new Fighter("Myrna", 12, 45, 30, 14));
+			comSkills.add(new Fighter("Arcam", 18, 78, 15, 19));
 		}
 	public static void userPlayerMaker()
 		{
@@ -43,26 +44,64 @@ public class Fighter
 			character = user1nput.nextInt();
 			character--;
 			character1 = (int)(Math.random()* 3)+1;
-			System.out.println("Your players are " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getDefense() + ", its health is " + playerSkills.get(character).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
-			System.out.println("and " + playerSkills.get(character1).getName() + ", its defense is " + playerSkills.get(character1).getDefense() + ", its health is " + playerSkills.get(character1).getHealth() + ", and its speed is " + playerSkills.get(character1).getSpeed() + ".");
+			System.out.println("Your players are " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getArmorClass() + ", its health is " + playerSkills.get(character).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
+			System.out.println("and " + playerSkills.get(character1).getName() + ", its defense is " + playerSkills.get(character1).getArmorClass() + ", its health is " + playerSkills.get(character1).getHealth() + ", and its speed is " + playerSkills.get(character1).getSpeed() + ".");
 		}
 	public static void comPlayerMaker()
 		{
 			System.out.println("Which character do you want for a bad guy? (1) Red Dragon (2) Frost Giant (3) Dragon Witch (4) The Beholder");
 			eCharacter = user1nput.nextInt();
 			eCharacter--;
-			System.out.println("Your enemy player is " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getDefense() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
+			System.out.println("Your enemy player is " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getArmorClass() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
 		}
 	public static void newPlayers()
 		{
-			arenaPlayers.add(new Fighter(playerSkills.get(character).getName(), playerSkills.get(character).getDefense(), playerSkills.get(character).getHealth(), playerSkills.get(character).getSpeed(), playerSkills.get(character).getIntiative()));
-			arenaPlayers.add(new Fighter(playerSkills.get(character1).getName(), playerSkills.get(character1).getDefense(), playerSkills.get(character1).getHealth(), playerSkills.get(character1).getSpeed(), playerSkills.get(character1).getIntiative()));
-			arenaPlayers.add(new Fighter(comSkills.get(eCharacter).getName(), comSkills.get(eCharacter).getDefense(), comSkills.get(eCharacter).getHealth(), comSkills.get(eCharacter).getSpeed(), comSkills.get(eCharacter).getIntiative()));
+			arenaPlayers.add(new Fighter(playerSkills.get(character).getName(), playerSkills.get(character).getArmorClass(), playerSkills.get(character).getHealth(), playerSkills.get(character).getSpeed(), playerSkills.get(character).getInitiative()));
+			arenaPlayers.add(new Fighter(playerSkills.get(character1).getName(), playerSkills.get(character1).getArmorClass(), playerSkills.get(character1).getHealth(), playerSkills.get(character1).getSpeed(), playerSkills.get(character1).getInitiative()));
+			arenaPlayers.add(new Fighter(comSkills.get(eCharacter).getName(), comSkills.get(eCharacter).getArmorClass(), comSkills.get(eCharacter).getHealth(), comSkills.get(eCharacter).getSpeed(), comSkills.get(eCharacter).getInitiative()));
 		}
 	public static void determiningTheCharacter()
 		{
 			System.out.println("Now it's time to battle!");
 			System.out.println("The Beholder rolls four times, so be prepared...");
+		}
+	public static void displayOnBoard()
+		{
+			Scanner spot = new Scanner(System.in);
+			System.out.println("Where do you want your first character to be on the board? (Preferably below E)");
+			String place = spot.nextLine();
+			switch(place.substring(0, 1))
+			{
+				case "A":
+				case "a":
+					characterPlace = 0;
+					break;
+				case "B":
+				case "b":
+					characterPlace = 1;
+					break;
+				case "C":
+				case "c":
+					characterPlace = 2;
+					break;
+				case "D":
+				case "d":
+					characterPlace = 3;
+					break;
+				case "E":
+				case "e":
+					characterPlace = 4;
+					break;
+				case "F":
+				case "f":
+					characterPlace = 5;
+					break;
+				case "G":
+				case "g":
+					characterPlace = 6;
+					break;
+			}
+			int choice = Integer.parseInt(place.substring(1)) - 1;
 		}
 	public static void runningTheGame()
 		{
@@ -73,11 +112,11 @@ public class Fighter
 			int dieRoll = (int)(Math.random()* 20)+1;
 			dieRoll += 5;
 			System.out.println("You rolled a " + dieRoll + ".");
-			if(dieRoll > comSkills.get(eCharacter).getDefense())
+			if(dieRoll > comSkills.get(eCharacter).getArmorClass())
 				System.out.println("You hit :) :) :) :)!!!!");
 			else
 				System.out.println("You missed :( :( :( :( :(.");
-			if(dieRoll > comSkills.get(eCharacter).getDefense())
+			if(dieRoll > comSkills.get(eCharacter).getArmorClass())
 				{
 					System.out.println("Now it's time to roll the damage dice.");
 					Scanner userlnput1 = new Scanner(System.in);
@@ -130,11 +169,11 @@ public class Fighter
 			int comRoll = (int)(Math.random()* 20)+1;
 			comRoll += 3;
 			System.out.println("Monster rolled a " + comRoll + ".");
-			if(comRoll > playerSkills.get(character).getDefense())
+			if(comRoll > playerSkills.get(character).getArmorClass())
 				System.out.println("Monster hit :( :( :( :(.");
 			else
 				System.out.println("Monster missed :) :) :) :) :)!!!!");
-			if(comRoll > playerSkills.get(character).getDefense())
+			if(comRoll > playerSkills.get(character).getArmorClass())
 				{
 					if(eCharacter == 3)
 						{
@@ -271,13 +310,13 @@ public class Fighter
 				}
 			return true;
 		}
-	public int getDefense()
+	public int getArmorClass()
 		{
 			return armorClass;
 		}
-	public void setDefense(int defense)
+	public void setArmorClass(int armorClass)
 		{
-			this.armorClass = defense;
+			this.armorClass = armorClass;
 		}
 	public int getHealth()
 		{
@@ -303,12 +342,12 @@ public class Fighter
 		{
 			this.speed = speed;
 		}
-	public int getIntiative()
+	public int getInitiative()
 		{
-			return intiative;
+			return initiative;
 		}
-	public void setIntiative(int intiative)
+	public void setInitiative(int intiative)
 		{
-			this.intiative = intiative;
+			this.initiative = intiative;
 		}
 	}

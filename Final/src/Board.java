@@ -1,10 +1,10 @@
 public class Board 
 {
 	static int misMatch = 0;
+	static String [][] board = new String[7][7];
+	static String [][] hiddenBoard = new String[7][7];
 	public static void makeTheBoard()
 	{
-		String [][] board = new String[7][7];
-		String [][] hiddenBoard = new String[7][7];
 		for(int row = 0; row < board.length; row++)
 			{
 				for(int col = 0; col < board.length; col++)
@@ -20,6 +20,9 @@ public class Board
 						misMatch++;
 					}
 			}
+	}
+	public static void display()
+	{
 		System.out.println("     1       2       3       4       5       6       7");
 		System.out.println("  _________________________________________________________");
 		System.out.println("  |       |       |       |       |       |       |       |");
@@ -51,5 +54,5 @@ public class Board
 		System.out.println("  |       |       |       |       |       |       |       |");
 		System.out.println("  ---------------------------------------------------------");
 	}
-
 }
+
