@@ -8,6 +8,7 @@ public class GameRunner
 	{
 		public static void main (String[] args)
 			{
+				Board.makeTheBoard();
 				PlayerMaker.greetUser();
 				Fighter.addCharacter();
 				Fighter.userPlayerMaker();
@@ -21,5 +22,6 @@ public class GameRunner
 						Fighter.runningTheGame();
 						Fighter.checkWonGame();
 					}
+				System.exit(0);
 			}
 	}

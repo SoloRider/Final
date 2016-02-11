@@ -21,7 +21,7 @@ public class PlayerMaker
 					{
 						System.out.println("Let's get it onnn!!!");
 					}
-				System.out.println("Ok, you will have 2 players to face 2 bad guys. Let the games begin!!!");
+				System.out.println("Ok, you will have 2 players to face 1 bad guy. Let the games begin!!!");
 				System.out.println("____________________________________");
 				System.out.println();
 			}

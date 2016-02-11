@@ -1,7 +1,7 @@
 public class Board 
 {
 	static int misMatch = 0;
-	public static void Board()
+	public static void makeTheBoard()
 	{
 		String [][] board = new String[7][7];
 		String [][] hiddenBoard = new String[7][7];

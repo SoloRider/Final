@@ -10,57 +10,54 @@ public class Fighter
 	static ArrayList<Fighter> comSkills = new ArrayList<Fighter>();
 	static ArrayList<Fighter> playerSkills = new ArrayList<Fighter>();
 	static ArrayList<Fighter> arenaPlayers = new ArrayList<Fighter>();
-	static int dieRoll1 = (int)(Math.random()* 6)+1;
-	static int eCharacter1;
+	static int dieRoll1 = (int)(Math.random()* 8)+1;
 	static int eCharacter;
-	private int defense;
+	private int armorClass;
 	private int health;
 	private String name;
 	private int speed;
 	private int intiative;
 	static boolean com;
-	public Fighter(String n ,int d, int h, int s, int i)
+	public Fighter(String n ,int aC, int h, int s, int i)
 		{
 			name = n;
-			defense = d;
+			armorClass = aC;
 			health = h;
 			speed = s;
 			intiative = i;
 		}
 	public static void addCharacter()
 		{
-			playerSkills.add(new Fighter("Wood Elf Archer", 16, 14, 40, 18));
-			playerSkills.add(new Fighter("Dwarven Cleric", 16, 16, 30, 14));
-			playerSkills.add(new Fighter("Half-Elf Theif", 14, 14, 35, 17));
-			playerSkills.add(new Fighter("Human Paladin", 18, 20, 30, 14));
-			comSkills.add(new Fighter("Vampire King", 13, 20, 30, 15));
-			comSkills.add(new Fighter("Kobold", 14, 10, 30, 13));
-			comSkills.add(new Fighter("Cultists", 15, 12, 30, 14));
-			comSkills.add(new Fighter("The Beholder", 18, 30, 30, 19));
+			playerSkills.add(new Fighter("Arrim", 17, 22, 40, 18));
+			playerSkills.add(new Fighter("Bolba", 22, 16, 30, 14));
+			playerSkills.add(new Fighter("Amiar", 16, 14, 35, 17));
+			playerSkills.add(new Fighter("Ajaxx", 19, 20, 30, 14));
+			comSkills.add(new Fighter("Smaug", 17, 25, 35, 18));
+			comSkills.add(new Fighter("Ettin", 10, 40, 30, 13));
+			comSkills.add(new Fighter("Myrna", 12, 15, 30, 14));
+			comSkills.add(new Fighter("Arcam", 18, 30, 15, 19));
 		}
 	public static void userPlayerMaker()
 		{
-			System.out.println("Which character do you want? (1) Wood Elf Ranger (2) Dwarven Cleric (3) Half-Elf Theif (4) Human Paladin");
+			System.out.println("Which character do you want? (1) Wood Elf Ranger (2) Dwarven Warrior (3) Dark-Elf Theif (4) Human Knight");
 			character = user1nput.nextInt();
 			character--;
-			character1 = (int)(Math.random()* 4)+1;
-			System.out.println("Your players are a " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getDefense() + ", its health is " + playerSkills.get(character).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
-			System.out.println("and a " + playerSkills.get(character1).getName() + ", its defense is " + playerSkills.get(character1).getDefense() + ", its health is " + playerSkills.get(character1).getHealth() + ", and its speed is " + playerSkills.get(character1).getSpeed() + ".");
+			character1 = (int)(Math.random()* 3)+1;
+			System.out.println("Your players are " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getDefense() + ", its health is " + playerSkills.get(character).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
+			System.out.println("and " + playerSkills.get(character1).getName() + ", its defense is " + playerSkills.get(character1).getDefense() + ", its health is " + playerSkills.get(character1).getHealth() + ", and its speed is " + playerSkills.get(character1).getSpeed() + ".");
 		}
 	public static void comPlayerMaker()
 		{
-			System.out.println("Which character do you want for a bad guy? (1) Vampire King (2) Kobold (3) Cultist (4) The Beholder");
+			System.out.println("Which character do you want for a bad guy? (1) Red Dragon (2) Frost Giant (3) Dragon Witch (4) The Beholder");
 			eCharacter = user1nput.nextInt();
 			eCharacter--;
-			System.out.println("Your enemy players are a " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getDefense() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
-			System.out.println("and a " + comSkills.get(eCharacter1).getName() + ", its defense is " + comSkills.get(eCharacter1).getDefense() + ", its health is " + comSkills.get(eCharacter1).getHealth() + ", and its speed is " + comSkills.get(eCharacter1).getSpeed() + ".");
+			System.out.println("Your enemy player is " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getDefense() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
 		}
 	public static void newPlayers()
 		{
 			arenaPlayers.add(new Fighter(playerSkills.get(character).getName(), playerSkills.get(character).getDefense(), playerSkills.get(character).getHealth(), playerSkills.get(character).getSpeed(), playerSkills.get(character).getIntiative()));
 			arenaPlayers.add(new Fighter(playerSkills.get(character1).getName(), playerSkills.get(character1).getDefense(), playerSkills.get(character1).getHealth(), playerSkills.get(character1).getSpeed(), playerSkills.get(character1).getIntiative()));
 			arenaPlayers.add(new Fighter(comSkills.get(eCharacter).getName(), comSkills.get(eCharacter).getDefense(), comSkills.get(eCharacter).getHealth(), comSkills.get(eCharacter).getSpeed(), comSkills.get(eCharacter).getIntiative()));
-			arenaPlayers.add(new Fighter(comSkills.get(eCharacter1).getName(), comSkills.get(eCharacter1).getDefense(), comSkills.get(eCharacter1).getHealth(), comSkills.get(eCharacter1).getSpeed(), comSkills.get(eCharacter1).getIntiative()));
 		}
 	public static void determiningTheCharacter()
 		{
@@ -74,7 +71,8 @@ public class Fighter
 			System.out.println("Hit r enter to roll");
 			String r = userlnput.nextLine();
 			int dieRoll = (int)(Math.random()* 20)+1;
-			System.out.println("You rolled a: " + dieRoll + ".");
+			dieRoll += 5;
+			System.out.println("You rolled a " + dieRoll + ".");
 			if(dieRoll > comSkills.get(eCharacter).getDefense())
 				System.out.println("You hit :) :) :) :)!!!!");
 			else
@@ -85,13 +83,25 @@ public class Fighter
 					Scanner userlnput1 = new Scanner(System.in);
 					System.out.println("Hit d enter for damage roll.");
 					String d = userlnput1.nextLine();
-					if(dieRoll == 20)
+					if(character == 2 || character1 == 2)
 						{
-							System.out.println("When you roll a 20 it does double damage, so you did " + dieRoll1*2 + ".");
-							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - dieRoll);
+							int darkElfRoll = (int)(Math.random()* 6)+1;
+							darkElfRoll += 2;
+							System.out.println("You did " + darkElfRoll + " damage on the first attack.");
+							System.out.println("Now you attack with your off-hand weapon...");
+							int darkElfRoll1 = (int)(Math.random()* 6)+1;
+							darkElfRoll1 += 2;
+							System.out.println("You did " + darkElfRoll1 + " on the off-hand attack.");
+							System.out.println("You did " + darkElfRoll + " + " + darkElfRoll1 + " damage.");
+							int totalRoll = darkElfRoll + darkElfRoll1;
+							System.out.println("You did a total of " + totalRoll + " damage.");
+							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - totalRoll);
+							System.out.println(comSkills.get(eCharacter).getHealth());
+							System.out.println("... is the monsters new health.");
 						}
 				else
 					{
+						dieRoll1 += 1;
 						System.out.println("The die roll is " + dieRoll1 + ".");
 						if(dieRoll1 == 1)
 							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - dieRoll1);
@@ -105,23 +115,28 @@ public class Fighter
 							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - dieRoll1);
 						if(dieRoll1 == 6)
 							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - dieRoll1);
+						if(dieRoll1 == 7)
+							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - dieRoll1);
+						if(dieRoll1 == 8)
+							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - dieRoll1);
+						System.out.println(comSkills.get(eCharacter).getHealth());
+						System.out.println("... is the monster's new health.");
 					}
-					System.out.println(comSkills.get(eCharacter).getHealth());
-					System.out.println("... Is the monster's new health.");
 				}
 			else
 				System.out.println("Sorry... it's the computer's turn now.");
 			System.out.println();
 			System.out.println("Now the monster will roll a 20 sided die to see if he will hit you.");
 			int comRoll = (int)(Math.random()* 20)+1;
-			System.out.println("Monster rolled a: " + comRoll + ".");
+			comRoll += 3;
+			System.out.println("Monster rolled a " + comRoll + ".");
 			if(comRoll > playerSkills.get(character).getDefense())
 				System.out.println("Monster hit :( :( :( :(.");
 			else
 				System.out.println("Monster missed :) :) :) :) :)!!!!");
 			if(comRoll > playerSkills.get(character).getDefense())
 				{
-					if(eCharacter == 3 || eCharacter1 == 3)
+					if(eCharacter == 3)
 						{
 							int dieRoll3 = (int)(Math.random()*4)+1;
 							System.out.println("His die roll is " + dieRoll3 + ".");
@@ -168,6 +183,57 @@ public class Fighter
 								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 4);
 							System.out.println(playerSkills.get(character).getHealth());
 						}
+					if(eCharacter == 0)
+						{
+							int redRoll = (int)(Math.random()*10) + 1;
+							redRoll += 1;
+							if(redRoll == 1)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 1);
+							if(redRoll == 2)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 2);
+							if(redRoll == 3)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 3);
+							if(redRoll == 4)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 4);
+							if(redRoll == 5)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 5);
+							if(redRoll == 6)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 6);
+							if(redRoll == 7)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 7);
+							if(redRoll == 8)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 8);
+							if(redRoll == 9)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 9);
+							if(redRoll == 10)
+								playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 10);
+							System.out.println(playerSkills.get(character).getHealth());
+							System.out.println(".... is " + playerSkills.get(character).getName() + "'s new health.");
+							int redRoll1 = (int)(Math.random()*10) + 1;
+							redRoll1 += 1;
+							if(redRoll1 == 1)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 1);
+							if(redRoll1 == 2)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 2);
+							if(redRoll1 == 3)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 3);
+							if(redRoll1 == 4)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 4);
+							if(redRoll1 == 5)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 5);
+							if(redRoll1 == 6)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 6);
+							if(redRoll1 == 7)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 7);
+							if(redRoll1 == 8)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 8);
+							if(redRoll1 == 9)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 9);
+							if(redRoll1 == 10)
+								playerSkills.get(character1).setHealth(playerSkills.get(character1).getHealth() - 10);
+							System.out.println(playerSkills.get(character1).getHealth());
+							System.out.println("... is " + playerSkills.get(character1).getName() + "'s new health.");
+						}
 				else
 					{
 						int dieRoll2 = (int)(Math.random()* 4)+1;
@@ -181,7 +247,7 @@ public class Fighter
 						if(dieRoll == 4)
 							playerSkills.get(character).setHealth(playerSkills.get(character).getHealth() - 4);
 						System.out.println(playerSkills.get(character).getHealth());
-						System.out.println("....Is your new health.");
+						System.out.println("... is your new health.");
 					}
 			}
 		}
@@ -207,11 +273,11 @@ public class Fighter
 		}
 	public int getDefense()
 		{
-			return defense;
+			return armorClass;
 		}
 	public void setDefense(int defense)
 		{
-			this.defense = defense;
+			this.armorClass = defense;
 		}
 	public int getHealth()
 		{
