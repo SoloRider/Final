@@ -8,6 +8,8 @@ public class Fighter
 	static int character1;
 	static int character;
 	static int characterPlace = 0;
+	static int characterPlace1 = 0;
+	static int eCharacterPlace = 0;
 	static ArrayList<Fighter> comSkills = new ArrayList<Fighter>();
 	static ArrayList<Fighter> playerSkills = new ArrayList<Fighter>();
 	static ArrayList<Fighter> arenaPlayers = new ArrayList<Fighter>();
@@ -34,8 +36,8 @@ public class Fighter
 			playerSkills.add(new Fighter("Amiar", 16, 14, 35, 17));
 			playerSkills.add(new Fighter("Ajaxx", 19, 20, 30, 14));
 			comSkills.add(new Fighter("Smaug", 17, 52, 35, 18));
-			comSkills.add(new Fighter("Ettin", 10, 88, 30, 13));
-			comSkills.add(new Fighter("Myrna", 12, 45, 30, 14));
+			comSkills.add(new Fighter("Ettin", 14, 88, 30, 13));
+			comSkills.add(new Fighter("Myrna", 13, 45, 30, 14));
 			comSkills.add(new Fighter("Arcam", 18, 78, 15, 19));
 		}
 	public static void userPlayerMaker()
@@ -60,15 +62,10 @@ public class Fighter
 			arenaPlayers.add(new Fighter(playerSkills.get(character1).getName(), playerSkills.get(character1).getArmorClass(), playerSkills.get(character1).getHealth(), playerSkills.get(character1).getSpeed(), playerSkills.get(character1).getInitiative()));
 			arenaPlayers.add(new Fighter(comSkills.get(eCharacter).getName(), comSkills.get(eCharacter).getArmorClass(), comSkills.get(eCharacter).getHealth(), comSkills.get(eCharacter).getSpeed(), comSkills.get(eCharacter).getInitiative()));
 		}
-	public static void determiningTheCharacter()
-		{
-			System.out.println("Now it's time to battle!");
-			System.out.println("The Beholder rolls four times, so be prepared...");
-		}
 	public static void displayOnBoard()
 		{
 			Scanner spot = new Scanner(System.in);
-			System.out.println("Where do you want your first character to be on the board? (Preferably below E)");
+			System.out.println("What column and row would you like to place " + playerSkills.get(character).getName() + " in?");
 			String place = spot.nextLine();
 			switch(place.substring(0, 1))
 			{
@@ -102,6 +99,84 @@ public class Fighter
 					break;
 			}
 			int choice = Integer.parseInt(place.substring(1)) - 1;
+			(Board.board[characterPlace][choice % 10]) = playerSkills.get(character).getName();
+			Board.display();
+			System.out.println("What column and row would you like to place " + playerSkills.get(character1).getName() + " in?");
+			String place1 = spot.nextLine();
+			switch(place1.substring(0, 1))
+			{
+				case "A":
+				case "a":
+					characterPlace1 = 0;
+					break;
+				case "B":
+				case "b":
+					characterPlace1 = 1;
+					break;
+				case "C":
+				case "c":
+					characterPlace1 = 2;
+					break;
+				case "D":
+				case "d":
+					characterPlace1 = 3;
+					break;
+				case "E":
+				case "e":
+					characterPlace1 = 4;
+					break;
+				case "F":
+				case "f":
+					characterPlace1 = 5;
+					break;
+				case "G":
+				case "g":
+					characterPlace1 = 6;
+					break;
+			}
+			int choice1 = Integer.parseInt(place1.substring(1)) - 1;
+			(Board.board[characterPlace1][choice1 % 10]) = playerSkills.get(character1).getName();
+			Board.display();
+			System.out.println("What column and row would you like to place " + comSkills.get(eCharacter).getName() + " in?");
+			String place2 = spot.nextLine();
+			switch(place2.substring(0, 1))
+			{
+				case "A":
+				case "a":
+					eCharacterPlace = 0;
+					break;
+				case "B":
+				case "b":
+					eCharacterPlace = 1;
+					break;
+				case "C":
+				case "c":
+					eCharacterPlace = 2;
+					break;
+				case "D":
+				case "d":
+					eCharacterPlace = 3;
+					break;
+				case "E":
+				case "e":
+					eCharacterPlace = 4;
+					break;
+				case "F":
+				case "f":
+					eCharacterPlace = 5;
+					break;
+				case "G":
+				case "g":
+					eCharacterPlace = 6;
+					break;
+			}
+			int choice2 = Integer.parseInt(place2.substring(1)) - 1;
+			(Board.board[eCharacterPlace][choice2 % 10]) = comSkills.get(eCharacter).getName();
+			Board.display();
+		}
+	public static void movingCharacters()
+		{
+			
 		}
 	public static void runningTheGame()
 		{
@@ -136,7 +211,7 @@ public class Fighter
 							System.out.println("You did a total of " + totalRoll + " damage.");
 							comSkills.get(eCharacter).setHealth(comSkills.get(eCharacter).getHealth() - totalRoll);
 							System.out.println(comSkills.get(eCharacter).getHealth());
-							System.out.println("... is the monsters new health.");
+							System.out.println("... is the monster's new health.");
 						}
 				else
 					{

@@ -10,7 +10,7 @@ public class PlayerMaker
 				System.out.println("What is your name?");
 				String name = userlnput.nextLine();
 				System.out.println("Nice to meet you, " + name + ".");
-				System.out.println("Would you like to play a game of ESO, " + name + "?");
+				System.out.println("Would you like to play a game of D&D, " + name + "?");
 				String choice = userlnput.nextLine();
 				if(choice.equals ("no") || choice.equals("No"))
 					{
