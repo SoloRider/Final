@@ -14,7 +14,6 @@ public class GameRunner
 				Fighter.addCharacter();
 				Fighter.userPlayerMaker();
 				Fighter.comPlayerMaker();
-				Fighter.newPlayers();
 				Collections.sort(Fighter.arenaPlayers, new InitiativeSorter());
 				for(Fighter f : Fighter.arenaPlayers)
 					{
@@ -22,10 +21,9 @@ public class GameRunner
 					}
 				System.out.println("Is the new order.");
 				Fighter.displayOnBoard();
-				Fighter.movingECharacters();
-				Board.display();
 				while(Fighter.checkWonGame())
 					{
+						Fighter.movingECharacters();
 						Fighter.runningTheGame();
 						Fighter.checkWonGame();
 					}

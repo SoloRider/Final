@@ -20,25 +20,35 @@ public class Fighter
 	private String name;
 	private int speed;
 	private int initiative;
+	private int place;
+	private int oldColPos;
+	private int oldRowPos;
+	private int newColPos;
+	private int newRowPos;
 	static boolean com;
-	public Fighter(String n ,int aC, int h, int s, int i)
+	public Fighter(String n ,int aC, int h, int s, int i, int p, int oCP, int oRP, int nCP, int nRP)
 		{
 			name = n;
 			armorClass = aC;
 			health = h;
 			speed = s;
 			initiative = i;
+			place = p;
+			oldColPos = oCP;
+			oldRowPos = oRP;
+			newColPos = nCP;
+			newRowPos = nRP;
 		}
 	public static void addCharacter()
 		{
-			playerSkills.add(new Fighter("Arrim", 17, 22, 8, 18));
-			playerSkills.add(new Fighter("Bolba", 22, 16, 6, 14));
-			playerSkills.add(new Fighter("Amiar", 16, 14, 7, 17));
-			playerSkills.add(new Fighter("Ajaxx", 19, 20, 6, 14));
-			comSkills.add(new Fighter("Smaug", 17, 52, 7, 18));
-			comSkills.add(new Fighter("Ettin", 14, 88, 6, 13));
-			comSkills.add(new Fighter("Myrna", 13, 45, 6, 14));
-			comSkills.add(new Fighter("Arcam", 18, 78, 3, 19));
+			playerSkills.add(new Fighter("Arrim", 17, 22, 8, 18, -1, -1, -1, -1, -1));
+			playerSkills.add(new Fighter("Bolba", 22, 16, 6, 14, -1, -1, -1, -1, -1));
+			playerSkills.add(new Fighter("Amiar", 16, 14, 7, 17, -1, -1, -1, -1, -1));
+			playerSkills.add(new Fighter("Ajaxx", 19, 20, 6, 14, -1, -1, -1, -1, -1));
+			comSkills.add(new Fighter("Smaug", 17, 52, 7, 18, -1, -1, -1, -1, -1));
+			comSkills.add(new Fighter("Ettin", 14, 88, 6, 13, -1, -1, -1, -1, -1));
+			comSkills.add(new Fighter("Myrna", 13, 45, 6, 14, -1, -1, -1, -1, -1));
+			comSkills.add(new Fighter("Arcam", 18, 78, 3, 19, -1, -1, -1, -1, -1));
 		}
 	public static void userPlayerMaker()
 		{
@@ -55,12 +65,6 @@ public class Fighter
 			eCharacter = user1nput.nextInt();
 			eCharacter--;
 			System.out.println("Your enemy player is " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getArmorClass() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
-		}
-	public static void newPlayers()
-		{
-			arenaPlayers.add(new Fighter(playerSkills.get(character).getName(), playerSkills.get(character).getArmorClass(), playerSkills.get(character).getHealth(), playerSkills.get(character).getSpeed(), playerSkills.get(character).getInitiative()));
-			arenaPlayers.add(new Fighter(playerSkills.get(character1).getName(), playerSkills.get(character1).getArmorClass(), playerSkills.get(character1).getHealth(), playerSkills.get(character1).getSpeed(), playerSkills.get(character1).getInitiative()));
-			arenaPlayers.add(new Fighter(comSkills.get(eCharacter).getName(), comSkills.get(eCharacter).getArmorClass(), comSkills.get(eCharacter).getHealth(), comSkills.get(eCharacter).getSpeed(), comSkills.get(eCharacter).getInitiative()));
 		}
 	public static void displayOnBoard()
 		{
@@ -181,7 +185,9 @@ public class Fighter
 				{
 					int colEMove = (int)(Math.random()*6);
 					int rowEMove = (int)(Math.random()*6);
-					Board.board[colEMove][rowEMove] = comSkills.get(eCharacter).getName();
+					comSkills.
+					comSkills.get(eCharacter).setNewRowPos(rowEMove);
+					Board.display();
 				}
 		}
 	public static void runningTheGame()
@@ -427,8 +433,48 @@ public class Fighter
 		{
 			return initiative;
 		}
-	public void setInitiative(int intiative)
+	public void setInitiative(int initiative)
 		{
-			this.initiative = intiative;
+			this.initiative = initiative;
+		}
+	public int getPlace()
+		{
+			return place;
+		}
+	public void setPlace(int place)
+		{
+			this.place = place;
+		}
+	public int getOldColPos()
+		{
+			return oldColPos;
+		}
+	public void setOldColPos(int oldColPos)
+		{
+			this.oldColPos = oldColPos;
+		}
+	public int getOldRowPos()
+		{
+			return oldRowPos;
+		}
+	public void setOldRowPos(int oldRowPos)
+		{
+			this.oldRowPos = oldRowPos;
+		}
+	public int getNewColPos()
+		{
+			return newColPos;
+		}
+	public void setNewColPos(int newColPos)
+		{
+			this.newColPos = newColPos;
+		}
+	public int getNewRowPos()
+		{
+			return newRowPos;
+		}
+	public void setNewRowPos(int newRowPos)
+		{
+			this.newRowPos = newRowPos;
 		}
 	}
