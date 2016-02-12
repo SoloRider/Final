@@ -31,14 +31,14 @@ public class Fighter
 		}
 	public static void addCharacter()
 		{
-			playerSkills.add(new Fighter("Arrim", 17, 22, 40, 18));
-			playerSkills.add(new Fighter("Bolba", 22, 16, 30, 14));
-			playerSkills.add(new Fighter("Amiar", 16, 14, 35, 17));
-			playerSkills.add(new Fighter("Ajaxx", 19, 20, 30, 14));
-			comSkills.add(new Fighter("Smaug", 17, 52, 35, 18));
-			comSkills.add(new Fighter("Ettin", 14, 88, 30, 13));
-			comSkills.add(new Fighter("Myrna", 13, 45, 30, 14));
-			comSkills.add(new Fighter("Arcam", 18, 78, 15, 19));
+			playerSkills.add(new Fighter("Arrim", 17, 22, 8, 18));
+			playerSkills.add(new Fighter("Bolba", 22, 16, 6, 14));
+			playerSkills.add(new Fighter("Amiar", 16, 14, 7, 17));
+			playerSkills.add(new Fighter("Ajaxx", 19, 20, 6, 14));
+			comSkills.add(new Fighter("Smaug", 17, 52, 7, 18));
+			comSkills.add(new Fighter("Ettin", 14, 88, 6, 13));
+			comSkills.add(new Fighter("Myrna", 13, 45, 6, 14));
+			comSkills.add(new Fighter("Arcam", 18, 78, 3, 19));
 		}
 	public static void userPlayerMaker()
 		{
@@ -65,7 +65,7 @@ public class Fighter
 	public static void displayOnBoard()
 		{
 			Scanner spot = new Scanner(System.in);
-			System.out.println("What column and row would you like to place " + playerSkills.get(character).getName() + " in?");
+			System.out.println("What column and row would you like to place " + playerSkills.get(character).getName() + " in? (Preferably G)");
 			String place = spot.nextLine();
 			switch(place.substring(0, 1))
 			{
@@ -101,7 +101,7 @@ public class Fighter
 			int choice = Integer.parseInt(place.substring(1)) - 1;
 			(Board.board[characterPlace][choice % 10]) = playerSkills.get(character).getName();
 			Board.display();
-			System.out.println("What column and row would you like to place " + playerSkills.get(character1).getName() + " in?");
+			System.out.println("What column and row would you like to place " + playerSkills.get(character1).getName() + " in? (Preferably G)");
 			String place1 = spot.nextLine();
 			switch(place1.substring(0, 1))
 			{
@@ -137,7 +137,7 @@ public class Fighter
 			int choice1 = Integer.parseInt(place1.substring(1)) - 1;
 			(Board.board[characterPlace1][choice1 % 10]) = playerSkills.get(character1).getName();
 			Board.display();
-			System.out.println("What column and row would you like to place " + comSkills.get(eCharacter).getName() + " in?");
+			System.out.println("What column and row would you like to place " + comSkills.get(eCharacter).getName() + " in? (Preferably A)");
 			String place2 = spot.nextLine();
 			switch(place2.substring(0, 1))
 			{
@@ -174,9 +174,15 @@ public class Fighter
 			(Board.board[eCharacterPlace][choice2 % 10]) = comSkills.get(eCharacter).getName();
 			Board.display();
 		}
-	public static void movingCharacters()
+	public static void movingECharacters()
 		{
-			
+			System.out.println("Now the bad guy will move.");
+			if(comSkills.get(eCharacter).getInitiative() > playerSkills.get(character).getInitiative() && comSkills.get(eCharacter).getInitiative() > playerSkills.get(character1).getInitiative())
+				{
+					int colEMove = (int)(Math.random()*6);
+					int rowEMove = (int)(Math.random()*6);
+					Board.board[colEMove][rowEMove] = comSkills.get(eCharacter).getName();
+				}
 		}
 	public static void runningTheGame()
 		{

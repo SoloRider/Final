@@ -22,6 +22,8 @@ public class GameRunner
 					}
 				System.out.println("Is the new order.");
 				Fighter.displayOnBoard();
+				Fighter.movingECharacters();
+				Board.display();
 				while(Fighter.checkWonGame())
 					{
 						Fighter.runningTheGame();
