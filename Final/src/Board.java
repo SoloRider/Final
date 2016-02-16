@@ -17,7 +17,6 @@ public class Board
 				for(int col = 0; col < board.length; col++)
 					{
 						hiddenBoard[row][col] = "     ";
-						misMatch++;
 					}
 			}
 	}
