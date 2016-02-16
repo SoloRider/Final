@@ -9,4 +9,5 @@ public class InitiativeSorter implements Comparator<Fighter>
 				else
 					return -1;
 			}
+		
 	}

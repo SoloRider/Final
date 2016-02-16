@@ -25,4 +25,5 @@ public class PlayerMaker
 				System.out.println("____________________________________");
 				System.out.println();
 			}
+
 	}

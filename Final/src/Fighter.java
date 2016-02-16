@@ -31,6 +31,7 @@ public class Fighter
 			currentColPos = cCP;
 			currentRowPos = cRP;
 		}
+	
 	public static void addCharacter()
 		{
 			playerSkills.add(new Fighter("Arrim", 17, 48, 8, 18, -1, -1, -1));
@@ -42,6 +43,7 @@ public class Fighter
 			comSkills.add(new Fighter("Myrna", 13, 45, 6, 14, -1, -1, -1));
 			comSkills.add(new Fighter("Arcam", 18, 78, 3, 19, -1, -1, -1));
 		}
+	
 	public static void userPlayerMaker()
 		{
 			System.out.println("Which character do you want? (1) Wood Elf Ranger (Arrim) (2) Dwarven Warrior (Bolba) (3) Dark-Elf Theif (Amiar) (4) Human Knight (Ajaxx)");
@@ -57,6 +59,7 @@ public class Fighter
 			System.out.println("Your players are " + playerSkills.get(character).getName() + ", its defense is " + playerSkills.get(character).getArmorClass() + ", its health is " + playerSkills.get(character).getHealth() + ", and its speed is " + playerSkills.get(character).getSpeed() + ".");
 			System.out.println("and " + playerSkills.get(character1).getName() + ", its defense is " + playerSkills.get(character1).getArmorClass() + ", its health is " + playerSkills.get(character1).getHealth() + ", and its speed is " + playerSkills.get(character1).getSpeed() + ".");
 		}
+	
 	public static void comPlayerMaker()
 		{
 			System.out.println("Which character do you want for a bad guy? (1) Red Dragon (Smaug) (2) Frost Giant (Ettin) (3) Dragon Witch (Myrna) (4) The Beholder (Arcam)");
@@ -64,12 +67,14 @@ public class Fighter
 			eCharacter--;
 			System.out.println("Your enemy player is " + comSkills.get(eCharacter).getName() + ", its defense is " + comSkills.get(eCharacter).getArmorClass() + ", its health is " + comSkills.get(eCharacter).getHealth() + ", and its speed is " + comSkills.get(eCharacter).getSpeed() + ".");
 		}
+	
 	public static void arenaPlayers()
 		{
 			arenaPlayers.add(new Fighter(playerSkills.get(character).getName(), playerSkills.get(character).getArmorClass(), playerSkills.get(character).getHealth(), playerSkills.get(character).getSpeed(), playerSkills.get(character).getInitiative(), playerSkills.get(character).getLocation(), playerSkills.get(character).getCurrentColPos(), playerSkills.get(character).getCurrentRowPos()));
 			arenaPlayers.add(new Fighter(playerSkills.get(character1).getName(), playerSkills.get(character1).getArmorClass(), playerSkills.get(character1).getHealth(), playerSkills.get(character1).getSpeed(), playerSkills.get(character1).getInitiative(), playerSkills.get(character1).getLocation(), playerSkills.get(character1).getCurrentColPos(), playerSkills.get(character1).getCurrentRowPos()));
 			arenaPlayers.add(new Fighter(comSkills.get(eCharacter).getName(), comSkills.get(eCharacter).getArmorClass(), comSkills.get(eCharacter).getHealth(), comSkills.get(eCharacter).getSpeed(), comSkills.get(eCharacter).getInitiative(), comSkills.get(eCharacter).getLocation(), comSkills.get(eCharacter).getCurrentColPos(), comSkills.get(eCharacter).getCurrentRowPos()));
 		}
+	
 	public static void displayOnBoard()
 		{
 			System.out.println("What row and column would you like to place " + playerSkills.get(character).getName() + " in? (Preferably G)");
@@ -200,6 +205,7 @@ public class Fighter
 			Board.board[comSkills.get(eCharacter).getCurrentRowPos()][comSkills.get(eCharacter).getCurrentColPos()] = comSkills.get(eCharacter).getName();
 			Board.display();
 		}
+	
 	public static void movingECharacter() throws InterruptedException
 		{
 			System.out.println("Now the bad guy will move.");
@@ -225,6 +231,7 @@ public class Fighter
 			Thread.sleep(1000);
 			Board.display();
 		}
+	
 	public static void movingCharacter() throws InterruptedException
 		{
 				int newRow = playerSkills.get(character).getCurrentRowPos();
@@ -284,6 +291,7 @@ public class Fighter
 				Thread.sleep(1000);
 				Board.display();
 		}
+	
 	public static void movingCharacter1() throws InterruptedException
 		{
 				int newRow1 = playerSkills.get(character1).getCurrentRowPos();
@@ -343,6 +351,7 @@ public class Fighter
 				Thread.sleep(1000);
 				Board.display();
 		}
+	
 	public static void runningTheGame(int activeCharacter)
 		{
 			System.out.println("Now you will roll a 20 sided die and you have to get above the monster's defense.");
@@ -530,6 +539,7 @@ public class Fighter
 					}
 			}
 		}
+	
 	public static boolean checkWonGame() throws InterruptedException
 		{
 			if(playerSkills.get(character).getHealth() <= 0 || playerSkills.get(character1).getHealth() <= 0)
@@ -553,52 +563,69 @@ public class Fighter
 				}
 			return true;
 		}
+	
 	public int getArmorClass() {
 		return armorClass;
 	}
+	
 	public void setArmorClass(int armorClass) {
 		this.armorClass = armorClass;
 	}
+	
 	public int getHealth() {
 		return health;
 	}
+	
 	public void setHealth(int health) {
 		this.health = health;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getSpeed() {
 		return speed;
 	}
+	
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	
 	public int getInitiative() {
 		return initiative;
 	}
+	
 	public void setInitiative(int initiative) {
 		this.initiative = initiative;
 	}
+	
 	public int getLocation() {
 		return location;
 	}
+	
 	public void setLocation(int location) {
 		this.location = location;
 	}
+	
 	public int getCurrentColPos() {
 		return currentColPos;
 	}
+	
 	public void setCurrentColPos(int currentColPos) {
 		this.currentColPos = currentColPos;
 	}
+	
 	public int getCurrentRowPos() {
 		return currentRowPos;
 	}
+	
 	public void setCurrentRowPos(int currentRowPos) {
 		this.currentRowPos = currentRowPos;
 	}
+	
 	}
