@@ -33,10 +33,10 @@ public class Fighter
 		}
 	public static void addCharacter()
 		{
-			playerSkills.add(new Fighter("Arrim", 17, 28, 8, 18, -1, -1, -1));
-			playerSkills.add(new Fighter("Bolba", 20, 22, 6, 14, -1, -1, -1));
-			playerSkills.add(new Fighter("Amiar", 16, 20, 7, 17, -1, -1, -1));
-			playerSkills.add(new Fighter("Ajaxx", 19, 26, 6, 14, -1, -1, -1));
+			playerSkills.add(new Fighter("Arrim", 17, 48, 8, 18, -1, -1, -1));
+			playerSkills.add(new Fighter("Bolba", 20, 42, 6, 14, -1, -1, -1));
+			playerSkills.add(new Fighter("Amiar", 16, 46, 7, 17, -1, -1, -1));
+			playerSkills.add(new Fighter("Ajaxx", 19, 44, 6, 14, -1, -1, -1));
 			comSkills.add(new Fighter("Smaug", 17, 52, 7, 18, -1, -1, -1));
 			comSkills.add(new Fighter("Ettin", 14, 88, 6, 13, -1, -1, -1));
 			comSkills.add(new Fighter("Myrna", 13, 45, 6, 14, -1, -1, -1));
@@ -106,6 +106,7 @@ public class Fighter
 					characterPlace = 6;
 					break;
 			}
+//			if(place && characterPlace > )
 			playerSkills.get(character).setCurrentRowPos(characterPlace);
 			int choice = Integer.parseInt(place.substring(1)) - 1;
 			playerSkills.get(character).setCurrentColPos(choice);

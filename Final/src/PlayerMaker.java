@@ -17,12 +17,11 @@ public class PlayerMaker
 						System.out.println("Okay.... bye");
 						System.exit(0);
 					}
-				if(choice.equals ("yes") || choice.equals("Yes"))
+				if(choice.equals("yes") || choice.equals("Yes"))
 					{
 						System.out.println("Let's get it onnn!!!");
 					}
 				System.out.println("Ok, you will have 2 players to face 1 bad guy. Let the games begin!!!");
-				System.out.println("ALSO, PLEASE DON'T ENGAGE ON THE FIRST MOVE, LET THE ENEMY HAVE A TURN TO MOVE. :)");
 				System.out.println("____________________________________");
 				System.out.println();
 			}

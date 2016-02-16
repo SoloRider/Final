@@ -85,8 +85,6 @@ public class GameRunner
 											if(Fighter.playerSkills.get(Fighter.character).getHealth() <= 0)
 												{	
 													move = true;
-													Fighter.movingCharacter1();
-													(Board.board[Fighter.playerSkills.get(Fighter.character).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character).getCurrentColPos()]) = "     ";
 												}
 										}
 								}
@@ -108,8 +106,6 @@ public class GameRunner
 											if(Fighter.playerSkills.get(Fighter.character1).getHealth() <= 0)
 												{
 													move = true;
-													Fighter.movingCharacter();
-													(Board.board[Fighter.playerSkills.get(Fighter.character1).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character1).getCurrentColPos()]) = "     ";
 												}
 										}
 			            		}
@@ -133,8 +129,6 @@ public class GameRunner
 											if(Fighter.playerSkills.get(Fighter.character1).getHealth() <= 0)
 												{
 													move = true;
-													Fighter.movingCharacter();
-													(Board.board[Fighter.playerSkills.get(Fighter.character1).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character1).getCurrentColPos()]) = "     ";
 												}
 										}
 			            		}
@@ -155,8 +149,6 @@ public class GameRunner
 											if(Fighter.playerSkills.get(Fighter.character).getHealth() <= 0)
 												{	
 													move = true;
-													Fighter.movingCharacter1();
-													(Board.board[Fighter.playerSkills.get(Fighter.character).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character).getCurrentColPos()]) = "     ";
 												}
 										}
 								}
@@ -165,6 +157,8 @@ public class GameRunner
 						else
 							{
 								Fighter.movingCharacter();
+								monsterRow = Fighter.comSkills.get(Fighter.eCharacter).getCurrentRowPos();
+								monsterCol = Fighter.comSkills.get(Fighter.eCharacter).getCurrentColPos();
 								characterRow = Fighter.playerSkills.get(Fighter.character).getCurrentRowPos();
 								characterCol = Fighter.playerSkills.get(Fighter.character).getCurrentColPos();
 								differenceR = monsterRow - characterRow;
@@ -181,16 +175,16 @@ public class GameRunner
 											if(Fighter.playerSkills.get(Fighter.character).getHealth() <= 0)
 												{	
 													move = true;
-													Fighter.movingCharacter1();
-													(Board.board[Fighter.playerSkills.get(Fighter.character).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character).getCurrentColPos()]) = "     ";
 												}
 										}
 								}
 								Fighter.movingCharacter1();
+								monsterRow = Fighter.comSkills.get(Fighter.eCharacter).getCurrentRowPos();
+								monsterCol = Fighter.comSkills.get(Fighter.eCharacter).getCurrentColPos();
 								characterRow1 = Fighter.playerSkills.get(Fighter.character1).getCurrentRowPos();
 								characterCol1 = Fighter.playerSkills.get(Fighter.character1).getCurrentColPos();
 								differenceR1 = monsterRow - characterRow1;
-								differenceC1 = monsterRow - characterCol1;
+								differenceC1 = monsterCol - characterCol1;
 								positiveDifferenceR1 = Math.abs(differenceR1);
 								positiveDifferenceC1 = Math.abs(differenceC1);
 								if (positiveDifferenceR1 <= 1 && positiveDifferenceC1 <= 1)
@@ -203,8 +197,6 @@ public class GameRunner
 											if(Fighter.playerSkills.get(Fighter.character1).getHealth() <= 0)
 												{
 													move = true;
-													Fighter.movingCharacter();
-													(Board.board[Fighter.playerSkills.get(Fighter.character1).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character1).getCurrentColPos()]) = "     ";
 												}
 										}
 			            		}
@@ -229,8 +221,6 @@ public class GameRunner
 									if(Fighter.playerSkills.get(Fighter.character).getHealth() <= 0)
 										{	
 											move = true;
-											Fighter.movingCharacter1();
-											(Board.board[Fighter.playerSkills.get(Fighter.character).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character).getCurrentColPos()]) = "     ";
 										}
 								}
 						}
@@ -253,8 +243,6 @@ public class GameRunner
 									if(Fighter.playerSkills.get(Fighter.character1).getHealth() <= 0)
 										{
 											move = true;
-											Fighter.movingCharacter();
-											(Board.board[Fighter.playerSkills.get(Fighter.character1).getCurrentRowPos()][Fighter.playerSkills.get(Fighter.character1).getCurrentColPos()]) = "     ";
 										}
 								}
 	            		}
