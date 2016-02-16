@@ -106,9 +106,18 @@ public class Fighter
 					characterPlace = 6;
 					break;
 			}
-//			if(place && characterPlace > )
+			if(characterPlace > 6)
+				{
+					System.out.println("That spot is invalid. Move again.");
+					Fighter.displayOnBoard();
+				}
 			playerSkills.get(character).setCurrentRowPos(characterPlace);
 			int choice = Integer.parseInt(place.substring(1)) - 1;
+			if(choice > 6)
+				{
+					System.out.println("That move is invalid. Move again.");
+					Fighter.displayOnBoard();
+				}
 			playerSkills.get(character).setCurrentColPos(choice);
 			Board.board[playerSkills.get(character).getCurrentRowPos()][playerSkills.get(character).getCurrentColPos()] = playerSkills.get(character).getName();
 			Board.display();
